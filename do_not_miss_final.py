@@ -16,7 +16,7 @@ class DoNotMissFinal(ConnectionListener):
         pygame.display.set_caption("Don't let Thunder miss the final!")
         self.clock = pygame.time.Clock()
         self.running_scene = level_one.starting_scene()
-        self.Connect(("134.87.42.233", 54321))
+        self.Connect("134.87.42.233", 54321)
  
     def control(self, event, press):
         x_out = event.type == pygame.QUIT
@@ -26,6 +26,14 @@ class DoNotMissFinal(ConnectionListener):
         # button or press the 'q' button 
         # it will quit the window
         return x_out or (quit)
+    
+    def Connect(self, host, port):
+        print(f"Attempting to connect to server at {host}:{port}")
+        try:
+            ConnectionListener.Connect(self, (host, port))
+            print("Connection attempt finished.")
+        except Exception as e:
+            print("Failed to connect to the server.")
  
     def run(self):
         while self.running_scene != None:
