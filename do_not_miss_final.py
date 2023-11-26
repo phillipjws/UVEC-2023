@@ -1,6 +1,6 @@
 # THIS IS MAIN
 import pygame
-import level_one
+import scenes
 
 frame = 50
 clock = pygame.time.Clock()
@@ -12,7 +12,7 @@ class DoNotMissFinal():
         self.screen = pygame.display.set_mode((600, 600))
         pygame.display.set_caption("Don't let Thunder miss the final!")
         self.clock = pygame.time.Clock()
-        self.running_scene = level_one.starting_scene()
+        self.running_scene = scenes.starting_scene()
  
     def control(self, event, press):
         x_out = event.type == pygame.QUIT

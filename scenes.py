@@ -5,6 +5,7 @@ pygame.init()
 
 title_py = "Get to the Calc 1 final on time!"
 frame = 50
+WINDOWWIDTH, WINDOWHEIGHT = 600, 600
 
 green = (69, 139, 116)
 white = (255, 255, 255)
@@ -14,6 +15,8 @@ screen = pygame.display.set_mode([740, 340])
 pygame.display.set_caption(title_py)
 
 screen_font = pygame.font.Font(font_size, 50)
+
+DISPLAYSURF = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
 
 # scene class in pygame
 class Scene():
@@ -40,7 +43,7 @@ class starting_scene(Scene):
         self.screen = screen
         self.wallList = [
             wall.Wall(70, 100),
-            wall.Wall(100, 100),
+            wall.Wall(100, 200),
             wall.Wall(130, 100),
             wall.Wall(160, 100),
             wall.Wall(190, 100),
@@ -64,6 +67,9 @@ class starting_scene(Scene):
         rect.centerx = 600 // 2
         rect.centery = 50
         screen.blit(text, rect)
+
+        for wall in self.wallList:
+            DISPLAYSURF.blit(wall.image, (wall.x, wall.y))
 
         self.allsprites.draw(self.screen)
  
