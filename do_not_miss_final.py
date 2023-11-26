@@ -84,6 +84,13 @@ class DoNotMissFinal:
             if self.player:
                 self.player.update()
                 update = ['position update', self.player.position[0], self.player.position[1]]
+            if pygame.sprite.spritecollide(self.player, self.all_sprites, False):
+                # self.screen = scenes.EndScene
+                pygame.display.set_caption("Uh oh, George distracted Thunder and made him miss his final!")
+                # self.running_scene = scenes.EndScene()
+                
+                
+ 
                 self.send_to_server(update)
 
             # Update the display
