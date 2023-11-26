@@ -13,7 +13,7 @@ class DoNotMissFinal():
         pygame.init()
 
             # Create a player sprite
-        self.player = Thunder(320, 240, 0, 0)
+        self.player = Thunder(0, 240, 0, 0)
         self.player2 = George(320, 240, 0, 0)
         self.all_sprites = pygame.sprite.Group(self.player, self.player2)
 
