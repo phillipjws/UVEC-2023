@@ -14,8 +14,8 @@ class DoNotMissFinal():
         pygame.init()
 
         # Create a player sprite
-        self.player = Thunder(320, 240, 0, 0)
-        self.player2 = George(320, 240, 0, 0)
+        self.player = Thunder(290, 60, 0, 0)
+        self.player2 = George(290, 290, 0, 0)
 
         self.screen = pygame.display.set_mode((600, 600))
         pygame.display.set_caption("Don't let Thunder miss the final!")
