@@ -4,6 +4,7 @@ import sys
 import scenes
 from characters.thunder_the_viking import Thunder
 from characters.george_the_peacock import George
+from power_ups.ecs_card import EcsCard
 import pickle
 
 frame = 50
@@ -21,6 +22,8 @@ class DoNotMissFinal:
         pygame.display.set_caption("Don't let Thunder miss the final!")
         self.clock = pygame.time.Clock()
         self.running_scene = scenes.starting_scene()
+
+        self.ecs_card = EcsCard(290, 290)
 
         # Network setup
         self.loop = asyncio.get_event_loop()
@@ -41,7 +44,7 @@ class DoNotMissFinal:
         # print(f"Message received from server: {message}")
         if message[0] == 'id update':
             character = message[1]
-            self.player = Thunder(320, 240, 0, 0) if character == "Thunder" else George(320, 240, 0, 0)
+            self.player = Thunder(290, 60, 0, 0) if character == "Thunder" else George(290, 290, 0, 0)
         elif message[0] == 'player locations':
             self.update_other_players(message[1:])
 
@@ -86,8 +89,21 @@ class DoNotMissFinal:
                 update = ['position update', self.player.position[0], self.player.position[1]]
                 self.send_to_server(update)
 
+                # if self.ecs_card and pygame.sprite.collide_rect(self.player, self.ecs_card):
+                #     self.ecs_card.apply_effect(self.player)
+                #     self.ecs_card = None  # Remove the card after it's been collected
+
+
             # Update the display
-            self.screen.fill((0, 0, 0))  # Clear the screen with black color
+            # self.screen.fill((0, 0, 0))  # Clear the screen with black color
+
+            self.running_scene.update()
+
+            # Render the scene
+            self.running_scene.rendering()
+
+            # if self.ecs_card:
+            #     self.screen.blit(self.ecs_card.image, self.ecs_card.position)
             if self.player:
                 self.screen.blit(self.player.image, self.player.position)
             for player in self.other_players.values():

@@ -9,6 +9,7 @@ class Thunder(pygame.sprite.Sprite):
         self.velocity = (velocity_x, velocity_y)
         self.image = pygame.image.load('./characters/thunder-standing.png')
         self.rect = self.image.get_rect(topleft = (x,y))
+        self.can_win = False
     
     def update(self):
         self.position = (self.position[0] + self.velocity[0], self.position[1] + self.velocity[1])
