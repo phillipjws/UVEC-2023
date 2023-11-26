@@ -15,18 +15,18 @@ class George(pygame.sprite.Sprite):
         surface.blit(self.image, self.position)
             
             
-    def move_left(self, surface):
+    def move_left(self):
         self.position = (self.position[0] -15 , self.position[1])
         self.image= pygame.image.load('./characters/peacock.png')
         
     
-    def move_right(self, surface):
+    def move_right(self):
         self.position = (self.position[0] +15, self.position[1])
         self.image = pygame.image.load('./characters/peacock-flip.png')
 
-    def move_up(self, surface):
+    def move_up(self):
         self.position = (self.position[0] , self.position[1] -15)
         
     
-    def move_down(self, surface):
+    def move_down(self):
         self.position = (self.position[0], self.position[1] +15)

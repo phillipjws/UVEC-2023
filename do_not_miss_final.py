@@ -13,7 +13,7 @@ class DoNotMissFinal():
     def __init__(self):
         pygame.init()
 
-            # Create a player sprite
+        # Create a player sprite
         self.player = Thunder(320, 240, 0, 0)
         self.player2 = George(320, 240, 0, 0)
 
@@ -32,58 +32,62 @@ class DoNotMissFinal():
         return x_out or (quit)
  
     def run(self):
-        while self.running_scene != None:
+        while self.running_scene is not None:
+            # Handle events
             eve = []
             press = pygame.key.get_pressed()
             for event in pygame.event.get():
-                if self.control(event, press):
-                    self.running_scene.terminate()
-                else:
-                    eve.append(event)
-
-            # Handle events
-            for event in pygame.event.get():
+                # if self.control(event, press):
+                #     self.running_scene.terminate()
+                # else:
+                #     eve.append(event)
+                # Handle quitting the game
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-
+                # Handle keyboard input for player movement
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
-                        self.player.move_left(self.screen)
+                        self.player.move_left()
                     elif event.key == pygame.K_RIGHT:
-                        self.player.move_right(self.screen)
+                        self.player.move_right()
                     elif event.key == pygame.K_UP:
-                        self.player.move_up(self.screen)
+                        self.player.move_up()
                     elif event.key == pygame.K_DOWN:
-                        self.player.move_down(self.screen)
-
+                        self.player.move_down()
                     elif event.key == pygame.K_a:
-                        self.player2.move_left(self.screen)
+                        self.player2.move_left()
                     elif event.key == pygame.K_d:
-                        self.player2.move_right(self.screen)
+                        self.player2.move_right()
                     elif event.key == pygame.K_w:
-                        self.player2.move_up(self.screen)
+                        self.player2.move_up()
                     elif event.key == pygame.K_s:
-                        self.player2.move_down(self.screen)
-            
+                        self.player2.move_down()
+
             # Update the player sprite
             self.player.update()
             self.player2.update()
- 
+
             # Manage scene
             self.running_scene.process_input(eve, press)
             self.running_scene.update()
-             
-            # dont move it as first we need to update then render
+
+            # Clear the screen
+            self.screen.fill((0, 0, 0))  # Clear the screen with black color
+
+            # Rendering the scene
             self.running_scene.rendering()
-             
-            # moving the scene one by one
-            self.running_scene = self.running_scene.next_scene  
-             
-            # means it will allow user to change the scene
-            pygame.display.flip() 
-            # Update and tick
+
+            # Draw the player sprites
+            self.screen.blit(self.player.image, self.player.position)
+            self.screen.blit(self.player2.image, self.player2.position)
+
+            # Update the display
+            pygame.display.flip()
+
+            # Tick the clock
             clock.tick(frame)
+
 
 # main (our code will run from here)
 if __name__ == "__main__":
