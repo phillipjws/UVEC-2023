@@ -6,7 +6,7 @@ class DoNotMissFinal():
     def __init__(self):
         pass
         pygame.init()
-        width, height = 389, 489
+        width, height = 600, 600
 
         #initialize the screen
         self.screen = pygame.display.set_mode((width, height))
