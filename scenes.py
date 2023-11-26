@@ -48,10 +48,10 @@ class starting_scene(Scene):
             wall.Wall(160, 100),
             wall.Wall(190, 100),
             wall.Wall(220, 100)
-            ]
+        ]
         
         self.allsprites = pygame.sprite.Group()
-        self.allsprites.add(self.wallList)
+        self.allsprites.add(*self.wallList)
  
     def process_input(self, events, press):
         for event in events:
@@ -66,11 +66,8 @@ class starting_scene(Scene):
         rect = text.get_rect()
         rect.centerx = 600 // 2
         rect.centery = 50
-        screen.blit(text, rect)
 
-        for wall in self.wallList:
-            DISPLAYSURF.blit(wall.image, (wall.x, wall.y))
-
+        self.screen.blit(text, rect)
         self.allsprites.draw(self.screen)
  
     def update(self):
