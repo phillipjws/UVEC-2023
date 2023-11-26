@@ -20,6 +20,7 @@ def main():
     # Create a player sprite
     player = Thunder(320, 240, 0, 0)
 
+    player2 = George(320, 240, 0, 0)
 
     while True:
         # Handle events
@@ -37,15 +38,26 @@ def main():
                     player.move_up(window)
                 elif event.key == pygame.K_DOWN:
                     player.move_down(window)
+
+                elif event.key == pygame.K_a:
+                    player2.move_left(window)
+                elif event.key == pygame.K_d:
+                    player2.move_right(window)
+                elif event.key == pygame.K_w:
+                    player2.move_up(window)
+                elif event.key == pygame.K_s:
+                    player2.move_down(window)
         
         # Update the player sprite
         player.update()
+        player2.update()
         
         # Clear the window
         window.fill((255, 255, 255))
         
         # Draw the player sprite
         player.draw(window)
+        player2.draw(window)
         
         # Update the display
         pygame.display.update()
