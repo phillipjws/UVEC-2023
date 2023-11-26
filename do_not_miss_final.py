@@ -1,6 +1,9 @@
 # THIS IS MAIN
 import pygame
+import sys
 import scenes
+from characters.thunder_the_viking import Thunder 
+from characters.george_the_peacock import George
 
 frame = 50
 clock = pygame.time.Clock()
@@ -9,6 +12,11 @@ class DoNotMissFinal():
 
     def __init__(self):
         pygame.init()
+
+            # Create a player sprite
+        self.player = Thunder(320, 240, 0, 0)
+        self.player2 = George(320, 240, 0, 0)
+
         self.screen = pygame.display.set_mode((600, 600))
         pygame.display.set_caption("Don't let Thunder miss the final!")
         self.clock = pygame.time.Clock()
@@ -32,6 +40,35 @@ class DoNotMissFinal():
                     self.running_scene.terminate()
                 else:
                     eve.append(event)
+
+            # Handle events
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_LEFT:
+                        self.player.move_left(self.screen)
+                    elif event.key == pygame.K_RIGHT:
+                        self.player.move_right(self.screen)
+                    elif event.key == pygame.K_UP:
+                        self.player.move_up(self.screen)
+                    elif event.key == pygame.K_DOWN:
+                        self.player.move_down(self.screen)
+
+                    elif event.key == pygame.K_a:
+                        self.player2.move_left(self.screen)
+                    elif event.key == pygame.K_d:
+                        self.player2.move_right(self.screen)
+                    elif event.key == pygame.K_w:
+                        self.player2.move_up(self.screen)
+                    elif event.key == pygame.K_s:
+                        self.player2.move_down(self.screen)
+            
+            # Update the player sprite
+            self.player.update()
+            self.player2.update()
  
             # Manage scene
             self.running_scene.process_input(eve, press)
