@@ -20,5 +20,7 @@ class Wall(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         # self.width = self.image.get_width()
         # self.height = self.image.get_height()
-        self.x = x
-        self.y = y
+        # self.x = x
+        # self.y = y
+
+        self.rect = self.image.get_rect(topleft=(x, y))
