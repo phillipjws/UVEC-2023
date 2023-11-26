@@ -1,14 +1,12 @@
 import pygame
 
 
-class Thunder(pygame.sprite.Sprite):
+class George(pygame.sprite.Sprite):
     def __init__(self, x, y, velocity_x, velocity_y):
         super().__init__()
         self.position = (x, y)
         self.velocity = (velocity_x, velocity_y)
-        self.image = pygame.image.load('./characters/thunder-standing.png')
-        
-        
+        self.image= pygame.image.load('./characters/peacock.png')
     
     def update(self):
         self.position = (self.position[0] + self.velocity[0], self.position[1] + self.velocity[1])
@@ -19,12 +17,12 @@ class Thunder(pygame.sprite.Sprite):
             
     def move_left(self, surface):
         self.position = (self.position[0] -15 , self.position[1])
-        self.image = pygame.image.load('./characters/thunder-standing-flip.png')
+        self.image= pygame.image.load('./characters/peacock.png')
         
     
     def move_right(self, surface):
         self.position = (self.position[0] +15, self.position[1])
-        self.image = pygame.image.load('./characters/thunder-standing.png')
+        self.image = pygame.image.load('./characters/peacock-flip.png')
 
     def move_up(self, surface):
         self.position = (self.position[0] , self.position[1] -15)
@@ -32,4 +30,3 @@ class Thunder(pygame.sprite.Sprite):
     
     def move_down(self, surface):
         self.position = (self.position[0], self.position[1] +15)
-        
