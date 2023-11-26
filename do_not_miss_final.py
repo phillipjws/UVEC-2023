@@ -1,5 +1,6 @@
 # THIS IS MAIN
 import pygame
+import level_one
 
 class DoNotMissFinal():
 
