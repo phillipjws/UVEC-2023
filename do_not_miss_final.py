@@ -68,6 +68,14 @@ class DoNotMissFinal():
             self.player.update()
             self.player2.update()
 
+            if ((self.player.position[1] ==self.player2.position[1]) and (self.player.position[0] ==self.player2.position[0]) ):
+                pygame.display.set_caption("Uh oh, George distracted Thunder and made him miss his final!")
+                self.running_scene = scenes.HitPeacockScene()
+
+            if self.player.position[1] >= 550:
+                pygame.display.set_caption("Thunder made it to his final on time")
+                self.running_scene = scenes.EndScene()
+
             # Manage scene
             self.running_scene.process_input(eve, press)
             self.running_scene.update()
