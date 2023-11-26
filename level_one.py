@@ -1,4 +1,5 @@
 import pygame
+import wall
 
 pygame.init()
 
@@ -45,6 +46,19 @@ class starting_scene(Scene):
                     self.next_scene = EndScene()
  
     def rendering(self):
+
+        wallList = [
+            wall.Wall(70, 100),
+            wall.Wall(100, 100),
+            wall.Wall(130, 100),
+            wall.Wall(160, 100),
+            wall.Wall(190, 100),
+            wall.Wall(220, 100)
+            ]
+        
+        allsprites = pygame.sprite.Group()
+        allsprites.add(wallList)
+
         self.screen.fill(green)
         text = screen_font.render(title_py, 1, white)
         rect = text.get_rect()
@@ -74,7 +88,7 @@ class EndScene(Scene):
         # font color will be white
         text = screen_font.render("Scene 2 Game Ending ", 1, white)
         rect = text.get_rect()
-        rect.centerx = 370  # location from x-axis
+        rect.centerx = 300  # location from x-axis
         rect.centery = 50  # location from y-axis
         screen.blit(text, rect)
  
