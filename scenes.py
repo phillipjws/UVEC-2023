@@ -40,7 +40,7 @@ class Scene():
 class starting_scene(Scene):
     def __init__(self):
         super().__init__()
-        self.screen = screen
+        self.screen = DISPLAYSURF 
         self.wallList = [
             wall.Wall(70, 100),
             wall.Wall(100, 200),
