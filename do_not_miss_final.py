@@ -30,6 +30,6 @@ class DoNotMissFinal():
         #update the screen
         pygame.display.flip()
 
-bg=BoxesGame() #__init__ is called right here
+bg=DoNotMissFinal() #__init__ is called right here
 while 1:
     bg.update()
