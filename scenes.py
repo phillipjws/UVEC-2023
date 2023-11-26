@@ -112,7 +112,29 @@ class EndScene(Scene):
     def rendering(self):
         screen.fill(green)
         # font color will be white
-        text = screen_font.render("GAME OVER ", 1, white)
+        text = screen_font.render("Thunder wins ", 1, white)
+        rect = text.get_rect()
+        rect.centerx = 300  # location from x-axis
+        rect.centery = 50  # location from y-axis
+        screen.blit(text, rect)
+
+class HitPeacockScene(Scene):
+    def __init__(self):
+        super().__init__()
+ 
+    def process_input(self, events, press):
+        for event in events:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    self.next_scene = starting_scene()
+ 
+    def update(self):
+        pass
+    # rendering the scene function
+    def rendering(self):
+        screen.fill(green)
+        # font color will be white
+        text = screen_font.render("George Wins ", 1, white)
         rect = text.get_rect()
         rect.centerx = 300  # location from x-axis
         rect.centery = 50  # location from y-axis
