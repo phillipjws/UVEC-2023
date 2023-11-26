@@ -16,9 +16,9 @@ class DoNotMissFinalServer(PodSixNet.Server.Server):
 
 
 if __name__ == "__main__":
-    print("STARTING SERVER ON LOCAL HOST")
+    print("STARTING SERVER ON 134.87.42.233")
 
-    do_not_miss_final_server = DoNotMissFinalServer(localaddr=("134.87.42.233", 12345))
+    do_not_miss_final_server = DoNotMissFinalServer(localaddr=("0.0.0.0", 54321))
 
     print("SERVER SUCCESFULLY ONLINE")
 
