@@ -16,7 +16,7 @@ class DoNotMissFinal(ConnectionListener):
         pygame.display.set_caption("Don't let Thunder miss the final!")
         self.clock = pygame.time.Clock()
         self.running_scene = level_one.starting_scene()
-        self.Connect(("127.0.0.1", 12345))
+        self.Connect(("134.87.42.233", 12345))
  
     def control(self, event, press):
         x_out = event.type == pygame.QUIT
