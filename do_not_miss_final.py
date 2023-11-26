@@ -21,6 +21,7 @@ def main():
     player = Thunder(320, 240, 0, 0)
 
     player2 = George(320, 240, 0, 0)
+    all_sprites = pygame.sprite.Group(player, player2)
 
     while True:
         # Handle events
@@ -51,6 +52,10 @@ def main():
         # Update the player sprite
         player.update()
         player2.update()
+
+            # Check for collision
+        if pygame.sprite.spritecollide(player, all_sprites, False):
+            print("Sprites are touching!")
         
         # Clear the window
         window.fill((255, 255, 255))
