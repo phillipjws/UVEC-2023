@@ -38,6 +38,7 @@ class DoNotMissFinal:
                 self.process_server_message(message)
 
     def process_server_message(self, message):
+        # print(f"Message received from server: {message}")
         if message[0] == 'id update':
             character = message[1]
             self.player = Thunder(320, 240, 0, 0) if character == "Thunder" else George(320, 240, 0, 0)
@@ -46,6 +47,7 @@ class DoNotMissFinal:
 
     def update_other_players(self, player_data):
         for character, x, y in player_data:
+            # print(f"Updating player {character} to position ({x}, {y})")
             if character != self.player.character:
                 if character not in self.other_players:
                     self.other_players[character] = George(x, y, 0, 0) if character == "George" else Thunder(x, y, 0, 0)
@@ -96,6 +98,7 @@ class DoNotMissFinal:
             await asyncio.sleep(0)
 
     def send_to_server(self, message):
+        # print(f"Sending to server: {message}")
         if self.writer is not None:
             self.writer.write(pickle.dumps(message))
             asyncio.create_task(self.writer.drain())

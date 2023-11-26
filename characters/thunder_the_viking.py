@@ -4,6 +4,7 @@ import pygame
 class Thunder(pygame.sprite.Sprite):
     def __init__(self, x, y, velocity_x, velocity_y):
         super().__init__()
+        self.character = "Thunder"
         self.position = (x, y)
         self.velocity = (velocity_x, velocity_y)
         self.image = pygame.image.load('./characters/thunder-standing.png')

@@ -42,6 +42,7 @@ class GameServer:
         handler.connection_lost(None)
 
     def update_world(self, handler, data):
+        print(f"Received data from client: {data}")
         player = self.players.get(handler)
         if not player:
             return
@@ -57,11 +58,14 @@ class GameServer:
         for player in self.players.values():
             update.append([player.character, player.x, player.y])
 
+        print(f"Broadcasting positions: {update}")
+
         for handler in self.players:
             try:
-                handler.send(pickle.dumps(update))
-            except:
-                pass
+                handler.transport.write(pickle.dumps(update))
+            except Exception as e:
+                print(f"Error sending update: {e}")
+
 
     def remove_player(self, handler):
         if handler in self.players:
